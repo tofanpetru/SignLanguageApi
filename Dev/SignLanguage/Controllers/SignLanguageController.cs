@@ -15,13 +15,31 @@ namespace SignLanguage.Controllers
             _signLanguageManager = signLanguageManager;
         }
 
-        // GET: api/Flight/5
-        [HttpGet("[controller]/{id}")]
-        public ActionResult<SignLanguageWordDetailsDTO> GetSignLanguageResult(int id)
+        [HttpGet("{id}")]
+        public ActionResult GetSignLanguage(int id)
         {
-            var signLanguage = _signLanguageManager.GetSignLanguageWordDetails(id);
+            try
+            {
+               return Ok(_signLanguageManager.Get(id));
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
 
-            return signLanguage;
+        [HttpGet]
+        public ActionResult GetAllSignLanguageWords()
+        {
+            try
+            {
+                return Ok(_signLanguageManager.GetAll());
+            }
+            catch
+            {
+
+                return BadRequest();
+            }
         }
     }
 }

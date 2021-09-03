@@ -8,7 +8,7 @@ namespace Application
     {
         public MappingProfile()
         {
-            CreateMap<SignLanguageWordDetailsDTO, SignLanguage>().ReverseMap();
+            CreateMap<SignLanguageDTO, SignLanguage>().ReverseMap();
         }
     }
 }

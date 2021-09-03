@@ -4,6 +4,6 @@ namespace Infrastructure.Repository.Interfaces
 {
     public interface ISignLanguageRepository : IRepository<SignLanguage>
     {
-        public SignLanguage GetSignLanguageById(int id);
+        public string FindSignLanguageUrlByWord(string word);
     }
 }

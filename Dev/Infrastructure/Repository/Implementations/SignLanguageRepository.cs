@@ -9,10 +9,11 @@ namespace Infrastructure.Repository.Implementations
     {
         public SignLanguageRepository(SignLanguageContext context) : base(context) { }
 
-        public SignLanguage GetSignLanguageById(int id)
+        public string FindSignLanguageUrlByWord(string word)
         {
-            return DataBaseContext.SignLanguages.Where(x => x.Id == id)
-                .FirstOrDefault();
+            return DataBaseContext.SignLanguages.Where(w => w.Word == word)
+                                                .Select(x => x.WordVideoUrl)
+                                                .FirstOrDefault();
         }
     }
 }

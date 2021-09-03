@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-    public class SignLanguageWordDetailsDTO
+    public class SignLanguageDTO
     {
         public int Id { get; set; }
         public string Word { get; set; }

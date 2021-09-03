@@ -2,6 +2,8 @@
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Repository.Interfaces;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Application.Manager
 {
@@ -16,17 +18,17 @@ namespace Application.Manager
             _mapper = mapper;
         }
 
-        public SignLanguageWordDetailsDTO GetSignLanguageWordDetails(int id)
+        public SignLanguageDTO GetSignUrlByWord(string word)
         {
-            var signLanguageWord = _signLanguageRepository.GetSignLanguageById(id);
-            if (signLanguageWord != null)
-            {
-                return _mapper.Map<SignLanguageWordDetailsDTO>(signLanguageWord);
-            }
-            else
-            {
-                return null;
-            }
+            return _mapper.Map<SignLanguageDTO>(_signLanguageRepository.FindSignLanguageUrlByWord(word));
+        }
+        public SignLanguageDTO Get(int id)
+        {
+            return _mapper.Map<SignLanguageDTO>(_signLanguageRepository.Get(id));
+        }
+        public ICollection<SignLanguageDTO> GetAll()
+        {
+            return _mapper.Map<ICollection<SignLanguageDTO>>(_signLanguageRepository.GetAll());
         }
     }
 }
